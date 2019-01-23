@@ -1,21 +1,29 @@
 import re
+from typing import Optional
 
 from .dhcpd_leases import DHCPDLeases
 
 
 class VNetCLI(object):
-    def __init__(self, name):
-        self.name = name
+    def __init__(self, name: str):
+        self.name: str = name
+        self.leases: Optional[DHCPDLeases] = None
+        self.dhcp: bool = False
+        self.netmask: Optional[str] = None
+        self.subnet: Optional[str] = None
+        self.nat: bool = False
+        self.virtual_adapter: bool = False
+
         self._parse_networking()
         self._load_dhcp_leases()
 
     def _load_dhcp_leases(self):
         try:
-            path = '/var/db/vmware/vmnet-dhcpd-{}.leases'
+            path: str = '/var/db/vmware/vmnet-dhcpd-{}.leases'
             self.leases = DHCPDLeases(path.format(self.name))
             self.leases.load()
         except ValueError:
-            self.leases = None
+            pass
 
     def _parse_networking(self):
         netfile = "/Library/Preferences/VMware Fusion/networking"
@@ -49,5 +57,5 @@ class VNetCLI(object):
 
 
 # Default access
-vmnet_hostonly = VNetCLI('vmnet1')
-vmnet_nat = VNetCLI('vmnet8')
+vmnet_hostonly: VNetCLI = VNetCLI('vmnet1')
+vmnet_nat: VNetCLI = VNetCLI('vmnet8')

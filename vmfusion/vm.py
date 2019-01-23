@@ -7,21 +7,21 @@ class VM(object):
     A virtual machine.
     """
 
-    def __init__(self, vmx):
-        self.vmx = get_abspath(vmx)
+    def __init__(self, vmx: str):
+        self.vmx: str = get_abspath(vmx)
         file_must_exist('VMX', self.vmx)
-        self.vmrun = VMRunCLI()
+        self.vmrun: VMRunCLI = VMRunCLI()
 
-    def start(self, gui=True):
+    def start(self, gui: bool = True):
         return self.vmrun.start(self.vmx, gui)
 
-    def stop(self, soft=True):
+    def stop(self, soft: bool = True):
         return self.vmrun.stop(self.vmx, soft)
 
-    def reset(self, soft=True):
+    def reset(self, soft: bool = True):
         return self.vmrun.reset(self.vmx, soft)
 
-    def suspend(self, soft=True):
+    def suspend(self, soft: bool = True):
         return self.vmrun.suspend(self.vmx, soft)
 
     def pause(self):
@@ -36,11 +36,11 @@ class VM(object):
     def list_snapshots(self):
         return self.vmrun.list_snapshots(self.vmx)
 
-    def snapshot(self, name):
+    def snapshot(self, name: str):
         return self.vmrun.snapshot(self.vmx, name)
 
-    def revert_to_snapshot(self, name):
+    def revert_to_snapshot(self, name: str):
         return self.vmrun.revert_to_snapshot(self.vmx, name)
 
-    def delete_snapshot(self, name):
+    def delete_snapshot(self, name: str):
         return self.vmrun.delete_snapshot(self.vmx, name)
