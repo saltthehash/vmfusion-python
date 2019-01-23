@@ -4,7 +4,7 @@ from typing import Optional
 from .dhcpd_leases import DHCPDLeases
 
 
-class VNetCLI(object):
+class VNetCLI:
     def __init__(self, name: str):
         self.name: str = name
         self.leases: Optional[DHCPDLeases] = None

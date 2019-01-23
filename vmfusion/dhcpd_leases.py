@@ -5,7 +5,7 @@ from typing import Dict, KeysView, Any
 import pyparsing
 
 
-class DHCPDLeases(object):
+class DHCPDLeases:
     """A dhcpd_leases contains a mapping between MAC and IP addresses from the
     content of a given dhpcd.leases file.
 

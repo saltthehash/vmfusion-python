@@ -5,7 +5,7 @@ from typing import Optional, Dict, List
 from .utils import file_must_not_exist, file_must_exist
 
 
-class VDiskManagerCLI(object):
+class VDiskManagerCLI:
     # Valid disks
     SPARSE_SINGLE: str = 'SPARSE_SINGLE'
     SPARSE_SPLIT: str = 'SPARSE_SPLIT'

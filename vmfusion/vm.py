@@ -2,7 +2,7 @@ from .utils import get_abspath, file_must_exist
 from .vmrun_cli import VMRunCLI
 
 
-class VM(object):
+class VM:
     """
     A virtual machine.
     """

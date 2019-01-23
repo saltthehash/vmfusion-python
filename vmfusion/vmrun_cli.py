@@ -6,7 +6,7 @@ from .exceptions import VMRunException
 from .utils import get_abspath, file_must_exist
 
 
-class VMRunCLI(object):
+class VMRunCLI:
     """Human readable python interface to the vmrun cli tool of VMware Fusion.
 
     Tested with VMware Fusion 5."""
