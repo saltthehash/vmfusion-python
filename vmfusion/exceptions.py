@@ -1,0 +1,2 @@
+class VMRunException(Exception):
+    pass
